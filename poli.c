@@ -88,15 +88,17 @@ int calcula_px(polinomio *p, int x){
 
 polinomio * poli_soma(polinomio *p, polinomio *q){
     // TODO: Implemente aqui a solucao para operacao que soma dois polinomios e gera um terceiro
+    // Pega o maior grau entre os polinomios para poder percorrer na soma
     int maiorGrau = (p->grau >= q->grau) ? p->grau : q->grau;
+    // Inicializa novo polinomio que servira como resultado da soma dos polinomios p e q
     polinomio *w = poli_create(maiorGrau);
 
     for (int i = 0; i <= maiorGrau; i++){
         // Verifica se o grau do polinomio é menor que o grau atual, para caso seja menor retornar 0 para a variavel
-        int p1 = (i <= p->grau) ? p->coeficientes[i] : 0;
-        int p2 = (i <= q->grau) ? q->coeficientes[i] : 0;
+        int pol1 = (i <= p->grau) ? p->coeficientes[i] : 0;
+        int pol2 = (i <= q->grau) ? q->coeficientes[i] : 0;
 
-        poli_ins_termo(w, i, (p1 + p2));
+        poli_ins_termo(w, i, (pol1 + pol2));
     }
 
     return w;

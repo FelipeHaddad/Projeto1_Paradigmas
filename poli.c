@@ -85,11 +85,23 @@ int calcula_px(polinomio *p, int x){
     return somaTotal;
 }
 
+
 polinomio * poli_soma(polinomio *p, polinomio *q){
     // TODO: Implemente aqui a solucao para operacao que soma dois polinomios e gera um terceiro
+    int maiorGrau = (p->grau >= q->grau) ? p->grau : q->grau;
+    polinomio *w = poli_create(maiorGrau);
 
-    return NULL;
+    for (int i = 0; i <= maiorGrau; i++){
+        // Verifica se o grau do polinomio é menor que o grau atual, para caso seja menor retornar 0 para a variavel
+        int p1 = (i <= p->grau) ? p->coeficientes[i] : 0;
+        int p2 = (i <= q->grau) ? q->coeficientes[i] : 0;
+
+        poli_ins_termo(w, i, (p1 + p2));
+    }
+
+    return w;
 }
+
 
 polinomio * poli_mult(polinomio *p, polinomio *q){
     // TODO: Implemente aqui a solucao para operacao que multiplica dois polinomios e gera um terceiro

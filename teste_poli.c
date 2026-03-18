@@ -4,7 +4,7 @@ gcc -g poli.c teste_poli.c -o teste_poli
 
 Verifique os testes com
 
-./testa_poli
+./teste_poli
 
 Testando o valgrind
 valgrind --leak-check=yes ./teste_poli
@@ -38,7 +38,7 @@ int testa_termo() {
     test_assert(poli_ins_termo(p, -1, 5) == 0, "deveria falhar, expoente existente!");
     test_assert(poli_ins_termo(p, 5, 1) == 0, "deveria falhar, expoente existente!");
     // preenche os coeficientes para o polinomio
-    // p(x) = 2x^4 + 3x^3 - 5
+    // p(x) = 2x^4 + 3x^1 - 5
     poli_ins_termo(p, 4, 2); 
     poli_ins_termo(p, 1, 3); 
     poli_ins_termo(p, 0, -5);

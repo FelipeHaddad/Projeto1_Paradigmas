@@ -6,7 +6,7 @@
 polinomio * poli_create(int grau){
     // TODO: Implemente aqui a solucao para operacao create
 
-    polinomio *p = malloc(sizeof(p) * grau); 
+    polinomio *p = malloc(sizeof(polinomio)); 
      
     if(p == NULL){   
         return NULL;
@@ -72,19 +72,17 @@ int poli_get_termo(polinomio *p, int exp, int *coef){
 
 int calcula_px(polinomio *p, int x){
     // TODO: Implemente aqui a solucao para operacao calcula o valor de P(x)     
-    int expTotal = p->grau;
     int somaTotal = 0;
-    
-    while(expTotal != 0){
-        int potencia = x;
-        for (int i = 1; i <= expTotal; i++){
-           potencia *= i;  
-        }
-        somaTotal = ((p->coeficientes[expTotal]) * potencia) ;
-        expTotal--;
+    // potenciaDeX começa em 1, pois esta incluindo o coeficiente[0]
+    int potenciaDeX = 1;
+
+    // Vai lendo o polinomio do menor grau até o maior grau, incrementando a potencia de x
+    for (int i = 0; i <= p->grau; i++) {
+        somaTotal += p->coeficientes[i] * potenciaDeX;
+        potenciaDeX *= x;
     }
 
-    return (somaTotal + (p->coeficientes[0]*x));
+    return somaTotal;
 }
 
 polinomio * poli_soma(polinomio *p, polinomio *q){

@@ -108,7 +108,24 @@ polinomio * poli_soma(polinomio *p, polinomio *q){
 polinomio * poli_mult(polinomio *p, polinomio *q){
     // TODO: Implemente aqui a solucao para operacao que multiplica dois polinomios e gera um terceiro
 
-    return NULL;
+    int grauMult = p->grau + q->grau;
+
+    polinomio *m = poli_create(grauMult);
+
+    if(m == NULL){   
+        return NULL;
+    }
+
+     for(int i = 0; i <= p->grau; i++){
+        for(int j = 0; j <= q->grau; j++){
+
+           m->coeficientes[i + j] += p->coeficientes[i] * q->coeficientes[j];
+
+           
+        }
+    }
+
+    return m;
 }
 
 polinomio * poli_div(polinomio *p, polinomio *q){

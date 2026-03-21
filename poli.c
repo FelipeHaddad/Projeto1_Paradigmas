@@ -130,6 +130,35 @@ polinomio * poli_mult(polinomio *p, polinomio *q){
 
 polinomio * poli_div(polinomio *p, polinomio *q){
     // TODO: Implemente aqui a solucao para operacao que divide dois polinomios e gera um terceiro
+    int maiorGrauDividendo = p->grau;
+    int maiorGrauDivisor = q->grau;
+    int novoGrau = maiorGrauDividendo / maiorGrauDivisor;
+    polinomio *quociente = poli_create(novoGrau);
+
+    // Divisão do Dividendo pelo maior grau do divisor
+    poli_ins_termo(quociente, novoGrau, (p->coeficientes[maiorGrauDividendo] / q->coeficientes[maiorGrauDivisor]));
+
+    // Multiplicação do termo encontrado acima pelo divisor
+    polinomio *temp = poli_create(novoGrau);
+    poli_ins_termo(temp, novoGrau, (p->coeficientes[maiorGrauDividendo] / q->coeficientes[maiorGrauDivisor]));
+    temp = poli_multi(temp, q);
+
+    // Resto
+    if (p->grau == temp->grau){
+        if(p->coeficientes[p->grau] - temp->coeficientes[temp->grau] == 0){
+            for (int i = (p->grau); i != -1; i--){
+
+            }
+            polinomio *resto = poli_create(p->grau - 1);
+        }
+        else {
+            polinomio *resto = poli_create(p->grau);
+        }
+    }
+
+    
+
+
 
     return NULL;
 }

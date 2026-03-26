@@ -3,6 +3,10 @@
 
 #include "poli.h"
 
+// GRUPO
+// Felipe Bertacco Haddad - 10437372
+// Arthur Roldan - 10353847
+
 polinomio * poli_create(int grau){
     // Aloca espaço na memória
     polinomio *p = malloc(sizeof(polinomio)); 
